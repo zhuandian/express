@@ -25,7 +25,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".business.activity.ExpressHistoryActivity"></activity>
+        <activity android:name=".business.activity.OverdueInfoActivity"></activity>
+        <activity android:name=".business.activity.OverdueDetailActivity" />
+        <activity android:name=".business.activity.ExpressHistoryActivity" />
         <activity android:name=".business.activity.OverdueExpressActivity" />
         <activity android:name=".business.activity.HelpOtherAcitvity" />
         <activity android:name=".business.activity.ExpressDetailActivity" />
@@ -33,20 +35,20 @@
             android:name=".MainActivity"
             android:theme="@style/HomePageTheme"
             android:windowSoftInputMode="stateVisible|adjustPan">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".business.login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".business.PersonalDataActivity" />
         <activity android:name=".business.login.UserRegisterActivity" />

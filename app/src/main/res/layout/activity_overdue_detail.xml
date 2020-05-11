@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".business.activity.OverdueDetailActivity">
+
+    <include layout="@layout/layout_top_bar" />
+
+    <TextView
+        android:id="@+id/tv_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="jdfsakljfklsdjfkljsdklfsd"
+        android:textColor="@color/color_333333"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_pay"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="30dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="支付费用"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</LinearLayout>

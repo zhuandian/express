@@ -17,6 +17,7 @@ import com.zhuandian.express.R;
 import com.zhuandian.express.business.PersonalDataActivity;
 import com.zhuandian.express.business.activity.ExpressHistoryActivity;
 import com.zhuandian.express.business.activity.OverdueExpressActivity;
+import com.zhuandian.express.business.activity.OverdueInfoActivity;
 import com.zhuandian.express.business.login.LoginActivity;
 import com.zhuandian.express.business.utils.PictureSelectorUtils;
 import com.zhuandian.express.entity.UserEntity;
@@ -60,7 +61,7 @@ public class MineFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.iv_header, R.id.tv_nick_name, R.id.tv_more_setting, R.id.tv_logout, R.id.tv_history, R.id.tv_overdue})
+    @OnClick({R.id.iv_header, R.id.tv_nick_name, R.id.tv_more_setting, R.id.tv_logout, R.id.tv_history, R.id.tv_overdue,R.id.tv_overdue_info})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_header:
@@ -74,6 +75,9 @@ public class MineFragment extends BaseFragment {
                 break;
             case R.id.tv_more_setting:
                 startActivity(new Intent(actitity, PersonalDataActivity.class));
+                break;
+            case R.id.tv_overdue_info:
+                startActivity(new Intent(actitity, OverdueInfoActivity.class));
                 break;
             case R.id.tv_logout:
                 startActivity(new Intent(actitity, LoginActivity.class));

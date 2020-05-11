@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".business.activity.OverdueInfoActivity">
+
+    <include layout="@layout/layout_top_bar"/>
+
+
+    <TextView
+        android:gravity="center"
+        android:text="快递逾期收费标准:\n 每逾期一天多收取0.5元管理费，逾期费用3元封顶"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

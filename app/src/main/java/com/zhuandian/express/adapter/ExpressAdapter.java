@@ -10,6 +10,7 @@ import com.zhuandian.base.BaseAdapter;
 import com.zhuandian.base.BaseViewHolder;
 import com.zhuandian.express.R;
 import com.zhuandian.express.business.activity.ExpressDetailActivity;
+import com.zhuandian.express.business.activity.OverdueDetailActivity;
 import com.zhuandian.express.entity.ExpressEntity;
 
 import java.text.SimpleDateFormat;
@@ -54,22 +55,11 @@ public class ExpressAdapter extends BaseAdapter<ExpressEntity, BaseViewHolder> {
         tvTime.setText("取件时间：" + expressEntity.getCreatedAt().split(" ")[0]);
         tvType.setText(expressEntity.getType());
         tvLocal.setText("地点：" + expressEntity.getLocal());
-        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (expressEntity.getState() == 2) {
-                    Toast.makeText(mContext, "当前快递已完成取件，不允许重复操作", Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent(mContext, ExpressDetailActivity.class);
-                    intent.putExtra("entity", expressEntity);
-                    mContext.startActivity(intent);
-                }
-            }
-        });
-        initEndTime(expressEntity);
+
+        initEndTime(expressEntity, myViewHolder.itemView);
     }
 
-    private void initEndTime(ExpressEntity expressEntity) {
+    private void initEndTime(ExpressEntity expressEntity, View itemView) {
 
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -80,16 +70,39 @@ public class ExpressAdapter extends BaseAdapter<ExpressEntity, BaseViewHolder> {
 
             long timeIntval = (endTime.getTime() - currentTime.getTime()) / (1000L * 3600L * 24L);
 
+
             if (expressEntity.getState() == 2) {
                 tvEndTime.setText("已完成取件");
             } else {
                 if (timeIntval >= 0) {
-                    tvEndTime.setText(String.format("距离取件时间还是%d天", timeIntval));
+                    tvEndTime.setText(String.format("距离取件时间还是%d天", Math.abs(timeIntval)));
                 } else {
                     tvEndTime.setText("逾期未取件");
+
                 }
 
             }
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (expressEntity.getState() == 2) {
+                        Toast.makeText(mContext, "当前快递已完成取件，不允许重复操作", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (timeIntval >= 0) {
+                            Intent intent = new Intent(mContext, ExpressDetailActivity.class);
+                            intent.putExtra("entity", expressEntity);
+                            mContext.startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(mContext, OverdueDetailActivity.class);
+                            intent.putExtra("entity", expressEntity);
+                            mContext.startActivity(intent);
+                        }
+
+                    }
+                }
+            });
+
 
         } catch (Exception e) {
 

@@ -83,7 +83,7 @@ public class OverdueExpressActivity extends BaseActivity {
         query.setCachePolicy(BmobQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.order("-updatedAt");
         query.addWhereEqualTo("userId", BmobUser.getCurrentUser(UserEntity.class).getObjectId());
-//        query.addWhereEqualTo("state",1);
+        query.addWhereEqualTo("state",1);
         query.setLimit(10);
         query.setSkip(currentCount);
         query.findObjects(new FindListener<ExpressEntity>() {
