@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.zhuandian.base.BaseActivity;
 import com.zhuandian.express.MainActivity;
 import com.zhuandian.express.R;
+import com.zhuandian.express.business.activity.NewExpressActivity;
 import com.zhuandian.express.entity.UserEntity;
 
 
@@ -66,7 +67,11 @@ public class LoginActivity   extends BaseActivity {
                 @Override
                 public void done(UserEntity userEntity, BmobException e) {
                     if (e == null) {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        if (userEntity.getType()==1){
+                            startActivity(new Intent(LoginActivity.this, NewExpressActivity.class));
+                        }else {
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        }
                         finish();
                     } else {
                         Toast.makeText(LoginActivity.this, "登陆失败...", Toast.LENGTH_SHORT).show();

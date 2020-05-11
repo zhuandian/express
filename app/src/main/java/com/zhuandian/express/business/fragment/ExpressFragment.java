@@ -79,7 +79,7 @@ public class ExpressFragment extends BaseFragment {
     private void loadDatas() {
         currentCount = currentCount + 10;
         BmobQuery<ExpressEntity> query = new BmobQuery<>();
-        query.setCachePolicy(BmobQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.setCachePolicy(BmobQuery.CachePolicy.NETWORK_ONLY);
         query.order("-updatedAt");
         query.addWhereEqualTo("userId", BmobUser.getCurrentUser(UserEntity.class).getObjectId());
 //        query.addWhereEqualTo("state",1);

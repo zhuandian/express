@@ -10,6 +10,15 @@ import cn.bmob.v3.BmobUser;
 public class UserEntity extends BmobUser {
     private String nikeName;
     private String userInfo;
+    private int type;  //1。快递员  非 1 普通用户
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public String getNikeName() {
         return nikeName;

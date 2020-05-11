@@ -25,7 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".business.activity.OverdueInfoActivity"></activity>
+        <activity android:name=".business.activity.NewExpressActivity"></activity>
+        <activity android:name=".business.activity.OverdueInfoActivity" />
         <activity android:name=".business.activity.OverdueDetailActivity" />
         <activity android:name=".business.activity.ExpressHistoryActivity" />
         <activity android:name=".business.activity.OverdueExpressActivity" />
