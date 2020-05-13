@@ -56,18 +56,16 @@ public class OverdueDetailActivity extends BaseActivity {
 
             long timeIntval = (endTime.getTime() - currentTime.getTime()) / (1000L * 3600L * 24L);
 
-            double totalPay = 0.0;
-            if (timeIntval >= 6) {
-                totalPay = 6 * 0.5;
-            } else {
-                totalPay = Math.abs(timeIntval) * 0.5;
-            }
+            double totalPay = 6 * 0.5;
+
 
             tvDetail.setText("当前快递已预期 " + Math.abs(timeIntval) + " 天\n，根据快递预期收费标准，每天0.5元，最高收取3元\n 您当前应支付" + totalPay + "" +
                     "元 逾期费用，请点击下方按钮完成支付");
 
 
-            double finalTotalPay = totalPay;
+            double finalTotalPay = totalPay > 3 ? 3 : totalPay;
+
+
             tvPay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -87,7 +85,7 @@ public class OverdueDetailActivity extends BaseActivity {
                                     expressEntity.update(new UpdateListener() {
                                         @Override
                                         public void done(BmobException e) {
-                                            if (e==null){
+                                            if (e == null) {
                                                 finish();
                                                 Toast.makeText(OverdueDetailActivity.this, "快递状态更新成功", Toast.LENGTH_SHORT).show();
                                             }
@@ -102,7 +100,6 @@ public class OverdueDetailActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
     }
